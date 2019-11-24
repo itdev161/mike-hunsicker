@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 
-const CreatePost = ({ onPostCreated }) => {
+const CreatePost = ({ token, onPostCreated }) => {
   let history = useHistory();
   const [postData, setPostData] = useState({
     title: '',
@@ -32,7 +32,8 @@ const CreatePost = ({ onPostCreated }) => {
       try {
         const config = {
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'x-auth-token': token
           }
         };
 
